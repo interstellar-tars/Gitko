@@ -49,6 +49,35 @@
         <li>Device type distribution</li>
       </ul>
     </section>
+    <div class="d-flex justify-content-end">
+      <button id="darkModeToggle" class="btn btn-outline-secondary btn-sm">Toggle Dark Mode</button>
+    </div>
+    <script>
+      const body = document.body;
+      const toggle = document.getElementById('darkModeToggle');
+      const prefersDark = localStorage.getItem('theme') === 'dark';
+
+      function applyTheme(dark) {
+      body.classList.toggle('bg-dark', dark);
+      body.classList.toggle('text-light', dark);
+      Array.from(document.querySelectorAll('.card, .alert')).forEach(el => {
+      el.classList.toggle('bg-dark', dark);
+      el.classList.toggle('text-light', dark);
+      });
+      if (dark) {
+        localStorage.setItem('theme', 'dark');
+      } else {
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    toggle.addEventListener('click', () => {
+      const dark = !body.classList.contains('bg-dark');
+     applyTheme(dark);
+    });
+
+    if (prefersDark) applyTheme(true);
+  </script>
 
     <footer class="pt-5 border-top">
       <p class="text-muted">&copy; 2025 Gitko Analytics — Built with ♥ on Cloudflare | Gitko Analytics is a registered trademark of PhantomLabs CyberCO LLC. All rights reserved.</p>
