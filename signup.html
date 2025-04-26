@@ -22,7 +22,7 @@
     
     <h2 class="text-center mb-4">Create Your Gitko Analytics Account</h2>
 
-    <form action="/signup" method="POST" id="signup-form">
+    <form id="signup-form">
       <div class="mb-3">
         <label for="name" class="form-label">Full Name</label>
         <input type="text" class="form-control" id="name" name="name" required>
@@ -53,11 +53,40 @@
   </div>
 
   <script>
-    // Form submission handling (future enhancement)
+    // Handle the form submission
     document.getElementById('signup-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      alert("Sign-up process has been triggered. You will be redirected to the dashboard after completion.");
-      // You can integrate an actual API call here to create the organization and send an email.
+      
+      const formData = new FormData(this);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        company: formData.get('company'),
+        state: formData.get('state'),
+        country: formData.get('country'),
+      };
+      
+      // API call to create the organization
+      fetch('https://your-api-url.com/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      .then(response => response.json())
+      .then(responseData => {
+        if (responseData.success) {
+          // Redirect to the dashboard after successful signup
+          window.location.href = '/dashboard.html';
+        } else {
+          alert('There was an issue with the signup. Please try again.');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again later.');
+      });
     });
   </script>
 </body>
