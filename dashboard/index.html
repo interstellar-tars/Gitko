@@ -38,6 +38,13 @@
 
   <script src="dashboard.js"></script>
   <script>
+    // Check if the user is logged in
+    const token = localStorage.getItem('jwt_token');
+    if (!token) {
+      alert("You must be logged in to view this page.");
+      window.location.href = '/signup.html'; // Redirect to signup page
+    }
+
     const body = document.body;
     const toggle = document.getElementById('darkModeToggle');
     const prefersDark = localStorage.getItem('theme') === 'dark';
