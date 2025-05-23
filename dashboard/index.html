@@ -19,7 +19,7 @@
   <div class="container py-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
       <div class="d-flex align-items-center">
-        <img src="https://gitko.pages.dev/assets/images/logo-normal.png" alt="Gitko Logo" class="logo me-3">
+        <img src="https://gitko.st1.dolphinlabs.ie/assets/images/logo-normal.png" alt="Gitko Logo" class="logo me-3">
         <h1>Gitko Analytics Dashboard</h1>
       </div>
       <button id="darkModeToggle" class="btn btn-outline-secondary btn-sm">Toggle Dark Mode</button>
@@ -38,11 +38,10 @@
 
   <script src="dashboard.js"></script>
   <script>
-    // Check if the user is logged in
     const token = localStorage.getItem('jwt_token');
     if (!token) {
       alert("You must be logged in to view this page.");
-      window.location.href = '/signup.html'; // Redirect to signup page
+      window.location.href = '/signup.html'; 
     }
 
     const body = document.body;
