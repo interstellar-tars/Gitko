@@ -4,7 +4,7 @@ if (!token) {
   window.location.href = '/signup.html';
 }
 
-fetch('https://your-api-url.com/dashboard-data', {
+fetch('https://main.apis.gitko.st1.dolphinlabs.ie/dashboard-data', {
   headers: {
     'Authorization': `Bearer ${token}`
   }
