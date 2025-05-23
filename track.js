@@ -1,5 +1,5 @@
 (function() {
-  const endpoint = 'https://gitko.cubiodojo.workers.dev/track';
+  const endpoint = 'https://main.apis.gitko.st1.dolphinlabs.ie/track';
   const payload = {
     url: window.location.pathname,
     referrer: document.referrer,
